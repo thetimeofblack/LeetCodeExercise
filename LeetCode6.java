@@ -45,6 +45,7 @@ class LeetCode6 {
 				
 			}
 		}
+		
 		//last rows
 		for(int i=n ;i<s.length() ; i+=2*n){
 			newstring+=s.charAt(i); 
