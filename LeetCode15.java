@@ -4,63 +4,34 @@ import java.util.*;
 
 class LeetCode15{
 	    public static List<List<Integer>> threeSum(int[] nums) {
-					if(nums==null) return null ; 
-					List<List<Integer>> listlist  = new LinkedList<>(); 
-					
-					HashMap<Integer, Integer> map= new HashMap<>(); 
-					Arrays.sort(nums);
-					Set<List<Integer>> numberListSet = new HashSet<List<Integer>>();
-					for(int i=0 ; i<nums.length ;i++){
-						map.put(i,nums[i]); 
+			Arrays.sort(nums);
+			List<List<Integer>> listlist = new LinkedList<List<Integer>>();
+			HashSet<List<Integer>> set = new HashSet<List<Integer>>();
+			/* depends on the set search algorithm efficiency */
+			for(int i=0;i<nums.length;i++)
+			{
+				for(int j=i+1,k=nums.length-1;j<k;)
+				{
+					if(nums[i]+nums[j]+nums[k]==0)
+					{		
+						List<Integer> l= new LinkedList<Integer>();
+						l.add(nums[i]);
+						l.add(nums[j]);
+						l.add(nums[k]);
+					if(set.add(l))
+						listlist.add(l);
+						j++;
+						k--;
 					}
-					int start = 0 ;
-					int end = nums.length-1 ;
-					while(start<end){
-						int temp = 0-nums[start]-nums[end];
-						System.out.println(temp);
-						if(start>0&&nums[start]==nums[start-1]){
-							if(nums[start]+nums[start-1]+nums[end]==0) {
-								List<Integer> list = new LinkedList<>(); 
-									list.add(nums[start]); 
-									list.add(temp); 
-									list.add(nums[end]);
-									numberListSet.add(list); 
-							}
-							start++; 
-							continue;
-						}
-						if(end<nums.length-2&&nums[end]==nums[end+1]){
-							if(nums[end]+nums[end+1]+nums[start]==0) {
-								List<Integer> list = new LinkedList<>(); 
-									list.add(nums[start]); 
-									list.add(temp); 
-									list.add(nums[end]);
-									numberListSet.add(list); 
-							}
-							end++; 
-							continue;
-						}
-						if(temp<nums[start]||temp>nums[end]){ 
-							start++;
-							continue;
-						} 
-						if(map.containsValue(temp)){
-									List<Integer> list = new LinkedList<>(); 
-									list.add(nums[start]); 
-									list.add(temp); 
-									list.add(nums[end]);
-									numberListSet.add(list); 
-									end--; 
-						} 
-						start++;
-					}
-					
-					listlist.addAll(numberListSet);
-					return listlist; 
-				
-				
-					
-		}
+					else if(nums[i]+nums[j]+nums[k]<0)
+						j++;
+					else
+						k--;
+				}
+			}
+			return listlist;
+            
+        }
 		public static void main(String[] args){
 				int[] n1 = {-1,0,1,2,-1,-4}; 
 				int[] n2 = {0,-1,3,-2,1,3}; 
