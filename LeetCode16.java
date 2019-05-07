@@ -15,9 +15,9 @@ class LeetCode16{
 				int sum = nums[start]+nums[end]+nums[i]; 
 				 
 				int td = sum-target; 
-				System.out.println("i:"+i+"start:"+start+"end:"+end+"td:"+td);
+				//System.out.println("i:"+i+"start:"+start+"end:"+end+"td:"+td);
 				if(distance>=Math.abs(td)){
-					System.out.println(distance); 
+					//System.out.println(distance); 
 					distance = Math.abs(td) ; 
 					if(td==0) return target ; 
 					result = sum ;
