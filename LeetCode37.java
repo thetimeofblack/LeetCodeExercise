@@ -11,13 +11,19 @@ class LeetCode37{
 			for(int i = 1 ; i<=9 ;i++){
 				board[row][col] =(char) (i+48); 
 				if(validate(board,position)){
+					//board[row][col] =(char) (i+48); 
 					if(solve(board,position+1)) {
-					    System.out.println("position "+position+"character "+board[row][col]);
+						
+					    //System.out.println("position "+position+"character "+board[row][col]);
 				
 						return true; 
-					}//System.out.println("position "+position+"character "+board[row][col]);
+					}
+					board[row][col] = '.'; 
+				}//System.out.println("position "+position+"character "+board[row][col]);
+				else{
+						board[row][col] = '.'; 
+						//System.out.println("position "+position+"character "+board[row][col]);	
 				}
-				board[row][col] = '.'; 
 				
 			}
 		}else{
@@ -32,6 +38,7 @@ class LeetCode37{
 			int gridx = row/3*3; 
 			int gridy = col/3*3; 
 			for(int i= 0 ;i<9 ;i++){
+				//System.out.println("The row is "+ row + "The col is "+ col + "The value is"+ board[row][col]);
 				if(i!=col&&board[row][i]==board[row][col]) return false;
 				if(i!=row&&board[i][col]==board[row][col]) return false;
 				int x = i/3; 
@@ -40,6 +47,7 @@ class LeetCode37{
 				y += gridy ; 
 				if((row!=x)&&(col!=y)&&(board[row][col]==board[x][y])) return false;
 			}
+			//System.out.println("The row is "+ row + "The column is "+col+ "The b is" +board[row][col]);
 			return true; 
 	}
 	public static void main(String[] args){
@@ -49,7 +57,7 @@ class LeetCode37{
 					   {'8','.','.','.','6','.','.','.','3'},
 					   {'4','.','.','8','.','3','.','.','1'},
 					   {'7','.','.','.','2','.','.','.','6'},
-					   {'.','6','.','.','.','.','2','8','1'},
+					   {'.','6','.','.','.','.','2','8','.'},
 					   {'.','.','.','4','1','9','.','.','5'},
 					   {'.','.','.','.','8','.','.','7','9'}
 					  };
