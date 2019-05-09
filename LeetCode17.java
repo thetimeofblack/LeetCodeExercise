@@ -8,7 +8,6 @@ class LeetCode17{
 	public static List<String> letterCombinations(String digits){
 		List<String> result = new LinkedList<String>(); 
 		HashMap<Character, List<Character>> map = new HashMap<>(); 
-		
 		map.put('2',Arrays.asList('a','b','c'));
 		map.put('3',Arrays.asList('d','e','f')); 
 		map.put('4',Arrays.asList('g','h','i')); 
