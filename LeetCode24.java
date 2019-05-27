@@ -1,20 +1,21 @@
 class LeetCode24{
 	public static ListNode swapPairs(ListNode head) {
-        ListNode result = head ;
-		ListNode cur = head; 
-		while(cur!=null){
+        ListNode result = new ListNode(-1); 
+		result.next = head ;
+		ListNode cur = result; 
+		while(cur!=null&&cur.next!=null){
 			if(cur.next == null) break; 
-			if(cur.next.next == null) break; 
-			ListNode headnext  = cur.next; 
+			if(cur.next.next==null) break; 
+			ListNode headnext = new ListNode(-1); 
+			headnext  = cur.next; 
 			ListNode headnextnext = cur.next.next; 
 			ListNode tmphead = cur ;
-			tmphead.next = headnextnext; 
-			headnext.next = headnextnext.next; 
+			cur.next = headnextnext; 
 			headnextnext.next = headnext; 
-			cur = headnext; 
-			
+			headnext.next = headnextnext.next; 
+			cur = cur.next.next;			
 		}
-		return result; 
+		return result.next; 
     }
 	
 	public static ListNode createNewListNode(int[] nums){

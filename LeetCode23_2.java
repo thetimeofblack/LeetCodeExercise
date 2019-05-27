@@ -9,13 +9,18 @@ class LeetCode23_2{
 		};
 		
 		public static ListNode mergeKLists(ListNode[] lists) {
-			ListNode result = new ListNode(0); 
+			if(lists.length<1||lists==null) return null; 
+            if(lists.length==1) return lists[0];
+            ListNode result = new ListNode(0); 
 			ListNode head = result; 
 			PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length,comp); 
 			for(int i = 0 ; i<lists.length; i++){
 				while(lists[i]!=null){
-					queue.offer(lists[i]); 
-					lists[i] = lists[i].next; 
+                    ListNode temp = lists[i]; 
+                    lists[i] = lists[i].next; 
+                    temp.next = null ; 
+					queue.offer(temp); 
+					
 				}
 			}
 			
