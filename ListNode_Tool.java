@@ -1,0 +1,6 @@
+class ListNode_Tool{
+	
+	
+
+
+}

@@ -1,31 +1,33 @@
 class LeetCode23{
-	public ListNode mergeKLists(ListNode[] lists) {
-        ListNode newhead = new ListNode(Interger.MAX_VALUE);
-		if(list.length<1) return null ; 
-		int length = lists.length; 
-		ListNode min  = newhead; 
-		while(1){
-			boolean flag = false ; 
+	public static ListNode mergeKLists(ListNode[] lists) {
+        ListNode result = new ListNode(0);
+		if(lists==null||lists.length<1) return null ; 
+		ListNode head = result ; 
+		while(true){
+			int min_val = Integer.MAX_VALUE;  
+			int position = 0 ; 
 			for(int i=0;i<lists.length;i++){
-			
-				ListNode cur = lists.get(i); 
-				if(cur.next==null) continue;
-				flag = true; 
-				if(cur.val<min.val){
-					min = cur ;
-					cur = cur.next; 
+				if(lists[i]==null) continue; 
+				int cur_val = lists[i].val; 
+				if(min_val>=cur_val) {
+					min_val = cur_val; 
+					position = i ; 
 				}
-		}
-		if(!flag) break ;
-		ListNode next = ListNode(Integer.MAX_VALUE); 
-		min.next =  next;
+			}
+			
+			if(min_val==Integer.MAX_VALUE&&lists[position]==null) break ;
+			
+			ListNode newNode = new ListNode(min_val); 
+			head.next = newNode; 
+			head = head.next; 
+			lists[position] = lists[position].next; 
 		 
 		}
-		return newhead; 
+		return result.next; 
 	}
 	
 	public static boolean judgeEnd(ListNode[] lists){
-			
+			return true; 
 	}
 	
 	public static ListNode createNewListNode(int[] nums){
