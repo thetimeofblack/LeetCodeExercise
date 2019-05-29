@@ -56,6 +56,7 @@ class LeetCode23{
 			System.out.print(head.val +" "); 
 			head = head.next; 
 		}
+		System.out.println(head.val);
 	}
 	
 	

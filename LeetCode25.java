@@ -1,33 +1,9 @@
-/*
-There are many problems with the test code 
-Runtime: 0 ms, faster than 100.00% of Java online submissions for Swap Nodes in Pairs.
-Memory Usage: 33.7 MB, less than 100.00% of Java online submissions for Swap Nodes in Pairs.
-
-*/
-
-class LeetCode24{
-	public static ListNode swapPairs(ListNode head) {
-        ListNode result = new ListNode(-1); 
-		result.next = head ;
-		ListNode pre = result ; 
-		ListNode mid = head ; 
-		ListNode lat = head.next ;
-		
-		 
-		while(pre!=null&&mid!=null&&lat!=null){
-			//System.out.println("The pre "+pre.val+" The mid "+mid.val+"The lat "+lat.val); 
-			pre.next = lat;
-			mid.next = lat.next ; 
-			lat.next = mid ; 
-			
-			 
-			if(mid.next==null||mid.next.next==null) break; 
-			pre = mid ; 
-			mid = mid.next;
-			lat = mid.next;
-			//System.out.println("The pre "+pre.val+" The mid "+mid.val+"The lat "+lat.val);
-			
-		}
+class LeetCode25{
+	public ListNode reverseKGroup(ListNode head, int k) {
+        ListNode result = new ListNode(-1);
+		result.next = head ; 
+		ListNode start = result; 
+		while()
 		return result.next; 
     }
 	
